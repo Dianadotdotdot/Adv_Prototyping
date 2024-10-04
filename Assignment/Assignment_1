@@ -5,10 +5,12 @@ Assignment 1 description
 [Assignment 1 Code link] (assignment01_example.py.).
 
 Code snipped for changing states in the program:
-'''Python
+```Python
 
 paste code here
 
 
-'''
+```
 
+Image link example:
+[led circuit] (led blink bb.png)
