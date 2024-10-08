@@ -1,6 +1,5 @@
 ## Assignment 1
-The name of this assignment is "Friendship Circle"
-The concept is a sock with magnet hands.
+The name of this assignment is "Friendship Circle", and the concept is a sock with magnet hands.
 If the hands connect together, the LED stripe placed in front will light up in white. 
 After 5 seconds of connection, the LED stripe will flash light between pink, blue, and yellow.
 If disconnected, the light will turn blue and pause, until it is reconnected.
