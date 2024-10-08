@@ -1,5 +1,15 @@
 ## Assignment 1
-Assignment 1 description
+The name of this assignment is "Friendship Circle"
+The concept is a sock with magnet hands.
+If the hands connect together, the LED stripe placed in front will light up in white. 
+After 5 seconds of connection, the LED stripe will flash light between pink, blue, and yellow.
+If disconnected, the light will turn blue and pause, until it is reconnected.
+
+Concept image example:
+[led circuit] (concept.png)
+
+Diagram example:
+[led circuit] (diagram.png)
 
 [Repository README link](../README. md).
 [Assignment 1 Code link] (assignment01_example.py.).
@@ -12,5 +22,5 @@ paste code here
 
 ```
 
-Image link example:
-[led circuit] (led blink bb.png)
+Recording example:
+[led circuit] (recording.mov)
