@@ -44,6 +44,8 @@ This assignment is called "Friendship Circle," and the concept is a sock with ma
 I used a pair of socks with eye-shaped stitches and a pair of hands with a magnet tucked inside.
 
 ### Project outcome  
+![Final_Output](https://github.com/user-attachments/assets/f64791bb-8e3e-4c2f-b928-202c2a96e8be)
+
 If the hands do not connect, everything is in a null state.
 If the hands connect, the LED stripe placed in front will light up in white. 
 After 5 seconds of connection, the LED stripe will flash light between pink, blue, and yellow.
