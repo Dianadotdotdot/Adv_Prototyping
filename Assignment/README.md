@@ -5,7 +5,7 @@ This assignment is called "Friendship Circle," and the concept is a sock with ma
 
 
 ### Concept
-[concept.png](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Assignment/concept.png?raw=true)
+![concept](https://github.com/user-attachments/assets/e2b95d2d-b283-410d-8b1d-2eb5dcb02f3f)
 
 
 ### State Diagram
