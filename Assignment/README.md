@@ -9,22 +9,35 @@ This assignment is called "Friendship Circle," and the concept is a sock with ma
 
 
 ### State Diagram
-[diagram.png](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Assignment/diagram.png?raw=true)
+![diagram](https://github.com/user-attachments/assets/3014d940-7c47-4be6-839c-2c2ab18056d1)
 
 
 ### Hardware
 * ATOM S3 
-* BREADBRD
 * DIGITAL RGB LED
 
 ### Firmware   
 [micropython_code](Assignment_1.py)
 
 ``` Python  
-  if input_pin.value():  # read digital input
-    led_pin.off()        # turn off LED light
-  else:
-    led_pin.on()         # turn on LED light
+    if button.value() == 0 and not button_pressed:
+        button_pressed = True  # Button press detected
+
+    if button_pressed and program_state == STATE_STOPPED:
+        # State 1: White color, hold for 5 seconds
+        set_rgb_color(255, 255, 255)
+        time.sleep(5)
+        program_state = STATE_CYCLE_COLORS  # Switch to State 2
+
+    elif program_state == STATE_CYCLE_COLORS:
+        # State 2: Cycle through three colors
+        cycle_colors()
+
+    elif button.value() == 1 and program_state != STATE_STOPPED:
+        # State 3: When the button is released, stop the RGB strip
+        set_rgb_color(0, 0, 0)
+        program_state = STATE_STOPPED
+        button_pressed = False 
 ```
 
 ### Physical Components   
