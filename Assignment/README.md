@@ -7,7 +7,7 @@ After 5 seconds of connection, the LED stripe will flash light between pink, blu
 If disconnected, the light will turn blue and pause, until it is reconnected.
 
 Concept image example:
-[led circuit] (concept.png)
+[[led circuit] (concept.png)](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Assignment/concept.png)
 
 Diagram example:
 [led circuit] (diagram.png)
