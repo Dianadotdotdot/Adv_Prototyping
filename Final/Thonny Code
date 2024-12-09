@@ -1,0 +1,131 @@
+import os
+import time
+import network
+from machine import Pin, PWM, ADC
+from umqtt.simple import MQTTClient
+import m5utils
+from M5 import *
+from hardware import *
+
+# WiFi credentials
+ssid = ''
+password = ''
+
+# Adafruit IO credentials
+aio_user_name = ''
+aio_password = ''
+aio_slider_feed = aio_user_name + '/feeds/slider-feed'
+
+# Initialize WiFi
+wifi = network.WLAN(network.STA_IF)
+wifi.active(True)
+wifi.connect(ssid, password)
+
+print('Connecting to WiFi...')
+while not wifi.isconnected():
+    print('.', end='')
+    time.sleep(1)
+
+print('WiFi connected! IP:', wifi.ifconfig()[0])
+
+# Initialize MQTT client
+mqtt_client = MQTTClient(
+    'esp32_client',
+    'io.adafruit.com',
+    port=1883,
+    user=aio_user_name,
+    password=aio_password,
+    keepalive=3000
+)
+mqtt_client.connect()
+
+# 180° Servos
+servo_180_1 = PWM(Pin(2))
+servo_180_1.freq(50)
+
+servo_180_2 = PWM(Pin(38))
+servo_180_2.freq(50)
+
+# 360° Servo
+servo_360 = PWM(Pin(5))
+servo_360.freq(50)
+
+# Angle units (ADC pins)
+angle_unit_1 = ADC(Pin(1), atten=ADC.ATTN_11DB)
+angle_unit_2 = ADC(Pin(8), atten=ADC.ATTN_11DB)
+
+# Variables to store current values
+slider_value = 0
+
+# Function to read and remap angle unit
+def read_angle_unit(adc):
+    adc_val = adc.read()  # Raw ADC value
+    # Debugging: Print raw ADC values
+    print(f"Raw ADC Value: {adc_val}")
+    # Remap the ADC value (0–4095) to angle degrees (0–180)
+    remapped_value = m5utils.remap(adc_val, 0, 4095, 0, 180)
+    print(f"Remapped Angle Value: {remapped_value}")
+    return int(remapped_value)
+
+# Callback for slider feed
+def slider_callback(topic, msg):
+    global slider_value
+    try:
+        slider_value = int(msg.decode())
+        print(f"Slider value: {slider_value}")
+        if slider_value == 0:
+            servo_360.duty(75)  # Stop the 360° servo (neutral position)
+        else:
+            # Map slider value (0-255) to servo PWM duty cycle (60-120 for speed control)
+            servo_duty = int(m5utils.remap(slider_value, 0, 255, 60, 120))
+            servo_360.duty(servo_duty)
+    except ValueError:
+        print("Invalid slider value received!")
+
+mqtt_client.set_callback(slider_callback)
+mqtt_client.subscribe(aio_slider_feed)
+
+M5.begin()  # Initialize M5Stack
+
+# Reference the M5 LCD object
+lcd = M5.Lcd
+lcd.clear()
+lcd.setCursor(0, 0)
+
+# Function to update display
+def update_display(angle_1_deg, angle_2_deg, slider_value):
+    lcd.clear()
+    lcd.setCursor(0, 0)
+    lcd.print("180 Servo 1: {}°".format(angle_1_deg))
+    lcd.print("\n180 Servo 2: {}°".format(angle_2_deg))
+    lcd.print("\n360 Servo Speed: {}".format(slider_value))
+
+# Main loop
+print("Starting control loop...")
+while True:
+    M5.update()  # Update M5Stack state
+
+    # Read and remap angle unit 1 value
+    angle_1_deg = read_angle_unit(angle_unit_1)
+    servo_180_1_duty = int(m5utils.remap(angle_1_deg, 0, 180, 25, 125))  # Map to PWM range
+    servo_180_1.duty(servo_180_1_duty)
+
+    # Read and remap angle unit 2 value
+    angle_2_deg = read_angle_unit(angle_unit_2)
+    servo_180_2_duty = int(m5utils.remap(angle_2_deg, 0, 180, 25, 125))  # Map to PWM range
+    servo_180_2.duty(servo_180_2_duty)
+
+    # Print values to console for debugging
+    print(f"Angle Unit 1: {angle_1_deg}° -> Servo 1 Duty: {servo_180_1_duty}")
+    print(f"Angle Unit 2: {angle_2_deg}° -> Servo 2 Duty: {servo_180_2_duty}")
+    print(f"360 Servo Speed: {slider_value}")
+
+    # Update display
+    update_display(angle_1_deg, angle_2_deg, slider_value)
+
+    # Check MQTT messages for slider updates
+    mqtt_client.check_msg()
+
+    # Small delay (1 second for display update)
+    time.sleep(1)
+
