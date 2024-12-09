@@ -15,7 +15,8 @@ In general, think of your audience as someone new trying to learn how to make yo
 * Mini Angle Unit *2
 * Servo Kit 180° *2
   
-Final/Hardware.jpeg
+[Final/Hardware.jpeg
+](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Hardware.jpeg)
 
 ### Firmware   
 
