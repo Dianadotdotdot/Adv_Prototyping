@@ -15,12 +15,13 @@ In general, think of your audience as someone new trying to learn how to make yo
 * Mini Angle Unit *2
 * Servo Kit 180° *2
   
-[Final/Hardware.jpeg
+![Final/Hardware.jpeg
 ](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Hardware.jpeg)
 
 ### Firmware   
 
-Provide a link to your MicroPython code and explain the important parts that make your prototype work.  Most likely you should explain the inputs/outputs used in your code and how they affect the behavior of the prototype.
+[https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Thonny%20Code]
+
 
 To include code snippets, you can use the code block markdown, like this:
 
@@ -31,7 +32,7 @@ if(sensor_val > 100):  # sensor value higher than threshold
 
 ### Software   
 
-If applicable, explain the important software components of your project with relevant code snippets and links.  
+Adafruit
 
 ### Integrations   
 
