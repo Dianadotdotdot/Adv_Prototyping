@@ -10,12 +10,11 @@ In general, think of your audience as someone new trying to learn how to make yo
 
 ### Hardware
 
-List all the separate hardware components used in your project and briefly explain what they do.  To create a list with markdown syntax, use `-`, `*`, or `+` characters with each line of text:  
-* item 1  
-* item 2   
-* etc.  
+* AtomS3 Development Kit 
+* ATOMIC PortABC Extension Base   
+* Mini Angle Unit *2
+* Servo Kit 180° *2
 
-Include at least one image showing your hardware wiring in detail.  This could be several close-ups photos with the goal of showing the wiring connections are made between the ATOM board and each hardware component.  
 
 ### Firmware   
 
