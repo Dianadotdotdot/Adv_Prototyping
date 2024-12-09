@@ -14,7 +14,8 @@ In general, think of your audience as someone new trying to learn how to make yo
 * ATOMIC PortABC Extension Base   
 * Mini Angle Unit *2
 * Servo Kit 180° *2
-
+  
+Final/Hardware.jpeg
 
 ### Firmware   
 
