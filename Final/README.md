@@ -4,9 +4,15 @@ Provide a description of your initial project idea and include images of the con
 
 ## Implementation   
 
-Explain your process of prototype development including all applicable aspects such as hardware (electronics), firmware (MicroPython code), software (HTML/CSS/JavaScript or other code), integrations (Adafruit IO, IFTTT, etc.), enclosure and mechanical design.  
+The concept is an educational interactive board, presenting people "morie effect"
+There are 3 transparent paper with patterns, together, they created this illution. 
+![Example.jpeg
+](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Concept%20-%2001.mp4)
 
-In general, think of your audience as someone new trying to learn how to make your project and make sure to cover anything helpful to explain how it functions.  Use a separate subheader for each part:
+Here is the initial sketch:
+![Example.jpeg
+](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Design.png)
+
 
 ### Hardware
 
