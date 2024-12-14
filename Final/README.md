@@ -79,9 +79,8 @@ I created a dashboard on Adafruit, adjusting the slider on the dashboard will se
 
 ## Project outcome  
 
-Summarize the results of your final project implementation and include some photos of the prototype and a video walkthrough showing it working.  
+https://github.com/user-attachments/assets/b71d4ce8-c116-46fb-afe9-91af0169694b
 
-Note that GitHub has a small size limit for uploading files via browswer (25Mb max), so you may choose to use a link to YouTube, Google Drive, or another external site.
 
 ## Conclusion  
 
