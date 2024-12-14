@@ -84,7 +84,7 @@ https://github.com/user-attachments/assets/b71d4ce8-c116-46fb-afe9-91af0169694b
 
 ## Conclusion  
 
-As you wrap up the project, reflect on your experience of creating it.  Use this as an opportunity to mention any discoveries or challenges you came across along the way.  If there is anything you would have done differently, or have a chance to continue the project development given more time or resources, it’s a good way to conclude this section.
+This project was both challenging and rewarding, especially as I struggled with learning to code but somehow managed to make it work in the end. Along the way, I discovered many new things, like setting up Adafruit connections and working with all the different components. The prototype still needs refinement, especially in the rotation mechanism, which didn’t perform as smoothly as I had hoped, but I’m excited about improving it further.
 
 ## Project references  
 
