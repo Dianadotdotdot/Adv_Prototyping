@@ -1,17 +1,20 @@
 ## Introduction   
 
-Provide a description of your initial project idea and include images of the concept sketches that you created in Part 1 of this assignment.  Explain the reasoning behind your final choice of the project concept, whether it’s based on one of the initial sketches, or a departure from the original idea.  
-
-## Implementation   
-
 The concept is an educational interactive board, presenting people "morie effect"
-There are 3 transparent paper with patterns, together, they created this illution. 
+There are 3 pieces of transparent paper with patterns, together, they created this illusion. 
+I was facinated by this illution so I decide to create a prototype around this topic.
 ![Example.jpeg
 ](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Concept%20-%2001.mp4)
 
+
+## Implementation   
+
 Here is the initial sketch:
-![Example.jpeg
+![Sketch.jpeg
 ](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Design.png)
+
+The 2 180 servo will be connected to the 2 angle unit, controlling the rotating degree.
+The 360 servo will be connected to adafruit through wifi, and the rotation speed can be adjusted on a phone slider.
 
 
 ### Hardware
