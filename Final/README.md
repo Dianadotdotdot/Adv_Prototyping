@@ -3,8 +3,9 @@
 The concept is an educational interactive board, presenting people "morie effect"
 There are 3 pieces of transparent paper with patterns, together, they created this illusion. 
 I was facinated by this illution so I decide to create a prototype around this topic.
-![Example.jpeg
-](https://github.com/Dianadotdotdot/Adv_Prototyping/blob/main/Final/Concept%20-%2001.mp4)
+
+https://github.com/user-attachments/assets/ac9267fb-2883-4a6c-b6a2-13954dbba439
+
 
 
 ## Implementation   
