@@ -1,0 +1,65 @@
+from js import document, navigator, Object, TextDecoderStream
+from pyodide.ffi import create_proxy, to_js
+
+# Global variables
+port = None
+reader = None
+
+async def toggle_connection(event):
+    global port, reader
+    if port:
+        # Disconnect
+        try:
+            if reader:
+                await reader.cancel()
+            await port.close()
+            port = None
+            document.getElementById("connect-button").innerText = "🔌 Connect"
+            document.getElementById("data").textContent = "Disconnected"
+        except Exception as e:
+            print(f"Disconnect error: {e}")
+    else:
+        # Connect
+        try:
+            port = await navigator.serial.requestPort()
+            options = Object.fromEntries(to_js({"baudRate": 115200}))
+            await port.open(options)
+            document.getElementById("connect-button").innerText = "🔌 Disconnect"
+            document.getElementById("data").textContent = "Connected"
+            await read_serial()
+        except Exception as e:
+            print(f"Connect error: {e}")
+
+async def read_serial():
+    global reader
+    decoder = TextDecoderStream.new()
+    readable = port.readable.pipeThrough(decoder)
+    reader = readable.getReader()
+    
+    video = document.getElementById("video")
+    status = document.getElementById("data")
+    
+    while True:
+        try:
+            result = await reader.read()
+            if result.done:
+                break
+            
+            command = result.value.strip()
+            status.textContent = command
+            
+            if command == "play" and video.paused:
+                await video.play()
+            elif command == "pause" and not video.paused:
+                video.pause()
+                
+        except Exception as e:
+            print(f"Read error: {e}")
+            break
+
+# Set up event listener when page loads
+def main():
+    connect_button = document.getElementById("connect-button")
+    connect_button.addEventListener("click", create_proxy(toggle_connection))
+
+main()
